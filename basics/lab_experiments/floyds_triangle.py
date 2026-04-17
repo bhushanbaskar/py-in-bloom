@@ -12,7 +12,9 @@ Write a python program to print the Floyd‟s triangle
 '''
 
 count = 1
-for i in range(1,6):
+row = int(input("How many rows you want: "))
+
+for i in range(1,row+1):
     for j in range(1,i+1):
         print(count,end=' ')
         count +=1
