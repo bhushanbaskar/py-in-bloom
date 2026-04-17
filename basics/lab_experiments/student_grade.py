@@ -22,7 +22,7 @@ try:
     chemistry = float(input("Enter Marks of Chemistry :"))
     math = float(input("Enter Marks of Math :"))
     #if invalid marks are entered
-    if ( 0<= physics <= 100 and 0<= physics <= 100 and 0<= physics <= 100 ):
+    if not ( 0<= physics <= 100 and 0<= chemistry <= 100 and 0<= math <= 100 ):
         raise ValueError("marks should be in range 0 to 100")
     
     #if marks are valid calc average
