@@ -11,27 +11,27 @@ The program checks the validity of password.
 '''
 
 try:
-    password =  input("Enter Your Password: ")
-    #check for valid length
+    password = input("Enter Your Password: ")
+
+    errors = []
+
     if len(password) < 8:
-         raise ValueError('The password must be at least 8 characters long')
+        errors.append("At least 8 characters required")
 
-    #states 
-    hasUpper = False
-    hasLower = False
-    hasDigit = False
+    if not any(ch.isupper() for ch in password):
+        errors.append("Missing uppercase letter")
 
-    for ch in password:
-        if ch.isupper():
-            hasUpper= True
-        elif ch.islower():
-            hasLower = True
-        elif ch.isdigit():
-            hasDigit = True
-    if hasUpper and hasLower and hasDigit:
-        print('Valid, done.')
-    else:
-       raise ValueError('Need A-Z, a-z & 0-9')
+    if not any(ch.islower() for ch in password):
+        errors.append("Missing lowercase letter")
+
+    if not any(ch.isdigit() for ch in password):
+        errors.append("Missing digit")
+
+    if errors:
+        raise ValueError(", ".join(errors))
+
+    print("Valid, done.")
+
 except ValueError as error:
-    print(f"INVALID PASSWORD. Error: {error}")
+    print(f"INVALID PASSWORD: {error}")
     
